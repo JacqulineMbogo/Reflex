@@ -1,0 +1,81 @@
+package pfarmnet.pf.lg_sfa.database;
+/**
+ * Author Paul Davies.
+ * 22nd Feb, 2019.
+ * */
+public class DbStructure
+{
+    /**
+     * This class defines the tables of the database and the queries for creating and dropping the database.
+     * It also holds the name and version number of the database.
+     * For any field that indicates sync; 0 means not necessary, 1 means changes thus can be done.
+     * Upon every sync execution, the parameter for sync should be reset to 0.
+     * Any changes done in the tables must be indicated by flagging the sync field.
+     * 'Temporary' table are for the sake of computation and storing data for a short time while the script runs. They are however cleared of data upon execution completion
+     * -------------List of Table---------------
+     * Stock header
+     * Stock lines
+     * Stock Register
+     * Customers
+     * Products
+     * Bank
+     * Customer Account Transactions
+     * Customer Credit Transactions
+     * Sales Orders
+     * Sales Order Lines
+     * Invoices
+     * Payments
+     * Tenders
+     * Individual Payment Transactions
+     * Consignment Header
+     * Consignment Lines
+     * Stock Register
+     * Stock Temp
+     * Debt log*/
+
+    public static String DB_NAME    =   "LG";
+    public static int DB_VERSION    =   123;
+
+    public static String TABLE_STOCK_REQ_HEADER         =   "stock_req_header";
+    public static String STOCK_REQ_HEADER_CODE          =   "code";
+    public static String STOCK_REQ_HEADER_CUSTOMER      =   "customer";
+    public static String STOCK_REQ_HEADER_DATE          =   "req_date"; //The date this stock was requested.
+    public static String STOCK_REQ_HEADER_TIME          =   "req_time"; //The date this stock was requested.
+    public static String STOCK_REQ_HEADER_STATUS        =   "status";
+    public static String STOCK_REQ_HEADER_SYNC          =   "sync";
+    public static String STOCK_REQ_HEADER_SALESPERSON   =   "salesperson";
+    public static String STOCK_REQ_HEADER_REASON        =   "reason";
+    public static String CREATE_TABLE_STOCK_REQ_HEADER  =   "create table if not exists "+TABLE_STOCK_REQ_HEADER+"("+STOCK_REQ_HEADER_CODE+" text primary key, "+STOCK_REQ_HEADER_DATE+" text, "+STOCK_REQ_HEADER_STATUS+" text, "+STOCK_REQ_HEADER_SYNC+" integer,"+STOCK_REQ_HEADER_TIME+" text,"+STOCK_REQ_HEADER_SALESPERSON+" text," +STOCK_REQ_HEADER_REASON +" text,"+STOCK_REQ_HEADER_CUSTOMER+" text)";
+    public static String DROP_TABLE_STOCK_REQ_HEADER    =   "drop table if exists "+TABLE_STOCK_REQ_HEADER;
+
+
+
+    public static String TABLE_REQUEST_CART =   "cart";
+    public static String REQUEST_CART_PRODUCT_CODE           =   "cart_code";
+    public static String REQUEST_CART_PRODUCT_NAME           =   "cart_name";
+    public static String REQUEST_CART_PRODUCT_QTY           =   "qty";
+    public static String CREATE_TABLE_REQUEST_CART  =   "create table if not exists "+TABLE_REQUEST_CART+"("+REQUEST_CART_PRODUCT_CODE+" text primary key, "+ REQUEST_CART_PRODUCT_NAME+ " text, " + REQUEST_CART_PRODUCT_QTY + " text ) ";
+    public static String DROP_TABLE_REQUEST_CART   =   "drop table if exists "+TABLE_REQUEST_CART;
+
+
+
+
+
+    public static String TABLE_TEMP_STOCK_REQ_LINES              =   "stock_req_lines";
+        public static String STOCK_TEMP_REQ_LINES_HEADER         =   "header";
+        public static String STOCK_TEMP_REQ_LINES_CODE           =   "item_code";
+        public static String STOCK_TEMP_REQ_LINES_QTY            =   "qty";
+        public static String STOCK_TEMP_REQ_LINES_QTY_PROVIDED   =   "qty_provided";
+        public static String STOCK_TEMP_REQ_LINES_UNIT_PRICE     =   "unit_price";
+        public static String STOCK_TEMP_REQ_LINES_SYNC           =   "sync";
+        public static String CREATE_TABLE_TEMP_STOCK_REQ_LINES   =   "create table if not exists "+TABLE_TEMP_STOCK_REQ_LINES+"("+STOCK_TEMP_REQ_LINES_HEADER+" text, "+STOCK_TEMP_REQ_LINES_CODE+" text, "+STOCK_TEMP_REQ_LINES_QTY+" integer, "+STOCK_TEMP_REQ_LINES_QTY_PROVIDED+" integer, "+STOCK_TEMP_REQ_LINES_UNIT_PRICE+" real, "+STOCK_TEMP_REQ_LINES_SYNC+" integer )";
+        public static String DROP_TABLE_TEMP_STOCK_REQ_LINES     =   "drop table if exists "+TABLE_TEMP_STOCK_REQ_LINES;
+
+    public static String TABLE_STOCK_REQ_LINES              =   "stock_req_lines";
+    public static String STOCK_REQ_LINES_HEADER         =   "header";
+    public static String STOCK_REQ_LINES_CODE           =   "item_code";
+    public static String STOCK_REQ_LINES_QTY            =   "qty";
+    public static String STOCK_REQ_LINES_QTY_PROVIDED   =   "qty_provided";
+    public static String STOCK_REQ_LINES_UNIT_PRICE     =   "unit_price";
+    public static String STOCK_REQ_LINES_SYNC           =   "sync";
+    public static String CREATE_TABLE_STOCK_REQ_LINES   =   "create table if not exists "+TABLE_STOCK_REQ_LINES+"("+STOCK_REQ_LINES_HEADER+" text, "+STOCK_REQ_LINES_CODE+" text, "+
