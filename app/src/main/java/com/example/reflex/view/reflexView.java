@@ -13,7 +13,7 @@ import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedDeque;
 
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-public class view extends View {
+public class reflexView extends View {
 
     //static instance variables
     private static final String HIGH_SCORE = "HIGH_SCORE";
@@ -28,8 +28,8 @@ public class view extends View {
             private final Queue<ImageView> spots = new ConcurrentLinkedDeque<>();
             private final  Queue<Animator> animators = new ConcurrentLinkedDeque<>();
 
-            private TextView highScoreTextView, levelTextView, currentScoreTextView;
-            public view(Context context, SharedPreferences sharedPreferences, LinearLayout parentLayout) {
+            private TextView highScoreTextView, levelTextView, currentScoreTextView, lives;
+            public reflexView(Context context, SharedPreferences sharedPreferences, LinearLayout parentLayout) {
         super(context);
     }
 
